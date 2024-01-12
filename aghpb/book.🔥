@@ -1,0 +1,19 @@
+from python import Python
+
+struct Book:
+    var name: String
+    """The book's name."""
+    var category: String
+    """The category of the book."""
+    var date_added: String
+    """The date and time the book was added."""
+    var image_bytes: PythonObject # TODO: This should be bytes but WHAT THE HELL IS BYTES IN MOJO??
+    """The raw image bytes."""
+
+    fn __init__(inout self, headers: PythonObject, content: PythonObject) raises:
+        self.name = str(headers["book-name"])
+        self.category = str(headers["book-category"])
+        self.date_added = str(headers["book-date-added"])
+
+        let io = Python.import_module("io")
+        self.image_bytes = content

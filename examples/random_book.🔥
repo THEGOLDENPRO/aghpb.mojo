@@ -1,0 +1,24 @@
+from python import Python
+
+from aghpb import Client
+
+fn main() raises:
+    let python = Python.import_module("builtins")
+
+    let client = Client()
+    let book = client.random()
+
+    print(book.name)
+    print(book.category)
+    print(book.date_added)
+
+    # We have to use python's file open function as mojo's variant is just not working correctly for me.
+    let file = python.open("./anime_girl.png", "wb")
+    _ = file.write(book.image_bytes)
+    _ = file.close()
+
+    # This is how we would have done it in mojo if it wasn't so bad rn.
+
+    # var file = open("./anime_girl.png", "wb")
+    # file.write(book.image_bytes)
+    # file.close()

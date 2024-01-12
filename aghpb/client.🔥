@@ -1,0 +1,33 @@
+from python import Python
+
+from .book import Book
+
+struct Client:
+    var base_url: String
+    var http_session: PythonObject
+
+    # TODO: I want api_url to be Optional[String] but how the heck do that in mojo LMAO.
+    fn __init__(inout self, api_url: String = "https://api.devgoldy.xyz/aghpb/v1") raises: 
+        let requests = Python.import_module("requests")
+
+        self.base_url = api_url
+        self.http_session = requests.Session()
+
+    fn random(self, category: String = "") raises -> Book:
+        """Get's a random book. Uses the ``/v1/random`` endpoint."""
+
+        # NOTE: I can't get category to work because of this incomplete abomination of a language.
+        """
+        let url_params = Python.dict()
+
+        if category != "":
+            url_params["category"] = category
+
+        let params = Python.dict()
+        params["url"] = self.base_url + "/random"
+        params["params"] = url_params.py_object
+        """
+
+        let response = self.http_session.get(self.base_url + "/random")
+
+        return Book(response.headers, response.content)
