@@ -57,6 +57,8 @@ fn main() raises:
 ```
 and yes categories don't fucking work because OF THIS DUMB.... 😠 *alright let's take a chill pill* 
 
+> btw you can run that example if you git clone the repo and run ``mojo examples/random_book.🔥``.
+
 <br>
 
 Made using my API at 👉 https://api.devgoldy.xyz/aghpb/v1/
