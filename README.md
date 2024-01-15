@@ -29,7 +29,7 @@ so read their docs and find out yourself if you're so nerdy: https://docs.modula
 
 ## Examples
 This is how you may retrieve a random anime girls holding programming books:
-```mojo
+```python // change this to mojo when they are added to code block highlighting
 from python import Python
 
 from aghpb import Client
